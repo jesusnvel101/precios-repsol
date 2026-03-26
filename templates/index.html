@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Precios Mensuales | Repsol</title>
+
+    <link rel="icon" type="image/png" href="/static/icowb.png?v={{ static_version }}" />
+    <link rel="stylesheet" href="/static/styles.css?v={{ static_version }}" />
+</head>
+<body>
+    <div class="bg-overlay"></div>
+
+    <main class="page-shell">
+        <header class="topbar card">
+            <div class="brand-box">
+                <img
+                    src="/static/icowb.png?v={{ static_version }}"
+                    alt="Repsol"
+                    class="brand-logo"
+                />
+                <div class="brand-text">
+                    <h1 class="brand-main">Precios Mensuales</h1>
+                    <p class="brand-title">
+                        Carga y consulta de variables económicas de refinería
+                    </p>
+                </div>
+            </div>
+
+            <div class="datetime-wrap">
+                <div class="datetime-card">
+                    <div class="datetime-label">Fecha</div>
+                    <div class="datetime-value" id="currentDate">--/--/----</div>
+                </div>
+                <div class="datetime-card">
+                    <div class="datetime-label">Hora actual</div>
+                    <div class="datetime-value" id="liveClock">--:--:--</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="kpi-grid">
+            <article class="kpi-card card">
+                <div class="kpi-label">Último año cargado</div>
+                <div class="kpi-value" id="kpiUltimoAnio">-</div>
+            </article>
+
+            <article class="kpi-card card">
+                <div class="kpi-label">Último mes cargado</div>
+                <div class="kpi-value" id="kpiUltimoMes">-</div>
+            </article>
+
+            <article class="kpi-card card">
+                <div class="kpi-label">Última actualización</div>
+                <div class="kpi-value kpi-small" id="kpiUltimaActualizacion">-</div>
+            </article>
+
+            <article class="kpi-card card">
+                <div class="kpi-label">Celdas con datos</div>
+                <div class="kpi-value" id="kpiCeldas">0</div>
+            </article>
+        </section>
+
+        <section class="controls-card card">
+            <div class="controls-row">
+                <div class="field-block">
+                    <label class="field-label" for="yearSelect">Año</label>
+                    <select id="yearSelect"></select>
+                </div>
+
+                <div class="actions">
+                    <button id="btnLoadYear" class="btn btn-secondary" type="button">
+                        Cargar año
+                    </button>
+                    <button id="btnSaveYear" class="btn btn-primary" type="button">
+                        Guardar año completo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-card card">
+            <div class="section-head">
+                <div>
+                    <h2 class="section-title">Variables económicas</h2>
+                    <p class="section-subtitle">
+                        Registro mensual histórico desde 2024 hasta la fecha actual
+                    </p>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mes</th>
+                            <th>Estado</th>
+                            <th>Margen de FCC ($/bbl)</th>
+                            <th>Margen de Visbreaking ($/bbl)</th>
+                            <th>LVGO - Diesel ($/bbl)</th>
+                            <th>LVGO - Corte ($/bbl)</th>
+                            <th>Última actualización</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+            <div id="messageBox" class="message-box" role="alert" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="/static/app.js?v={{ static_version }}"></script>
+</body>
+</html>
